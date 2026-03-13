@@ -1,0 +1,10 @@
+# İşletim sistemi kalıntıları
+.DS_Store
+Thumbs.db
+
+# Editör dosyaları
+.vscode/
+.idea/
+
+# İleride şifreleri gizlemek için kullanacağımız çevre değişkenleri
+.env

@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  # 1. Veritabanımız (PostgreSQL)
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: appdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql # Tabloyu otomatik kurması için
+
+  # 2. Web Sunucumuz (Apache + PHP)
+  apache_php:
+    build: ./php-apache
+    volumes:
+      - ./html:/var/www/html # Yazacağımız kod buraya gelecek
+    depends_on:
+      - db
+
+  # 3. Kapıdaki Fedaimiz (Nginx Reverse Proxy)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - apache_php
+
+volumes:
+  pgdata:
