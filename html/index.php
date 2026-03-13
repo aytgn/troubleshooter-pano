@@ -3,7 +3,7 @@
 $host = 'db';
 $db = 'appdb';
 $user = 'root';
-$pass = 'secretpassword';
+$pass = getenv('APP_DB_PASS');
 
 try {
     // Veritabanına Bağlan
