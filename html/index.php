@@ -34,6 +34,7 @@ try {
 <body style="font-family: sans-serif; background-color: #f4f4f9; padding: 40px;">
     <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; margin: auto;">
         <h2 style="color: #333;">🛠️ Troubleshooter Kayıt Panosu</h2>
+	<p style="color: #d9534f; font-weight: bold;">👨‍🍳 Hizmet Veren Sunucu ID: <?= gethostname() ?></p>
         <form method="POST" style="margin-bottom: 20px;">
             <input type="text" name="task" placeholder="Yeni bir sorun/görev yaz..." required style="padding: 10px; width: 70%; border: 1px solid #ccc; border-radius: 4px;">
             <button type="submit" style="padding: 10px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">Kaydet</button>
